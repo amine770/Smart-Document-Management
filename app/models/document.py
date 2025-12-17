@@ -30,14 +30,14 @@ class Document(Base):
 
     uploader = relationship("User", back_populates="documents")
     folder = relationship("Folder", back_populates="documents")
-    # extracted_text = relationship("ExtractedText", 
-    #                               back_populates="document",
-    #                               uselist=False, # for one to one
-    #                               cascade="all, delete-orphan")
+    extracted_text = relationship("ExtractedText", 
+                                  back_populates="document",
+                                  uselist=False, # for one to one
+                                  cascade="all, delete-orphan")
     
-    # tags = relationship("Tag",
-    #                     secondary="document_tags", # for many to many
-    #                     back_populates="documents")
+    tags = relationship("Tag",
+                        secondary="document_tags", # for many to many
+                        back_populates="documents")
     
     def __repr__(self):
         return f"<Document(id={self.id}, title={self.title}, type={self.file_type})"
